@@ -8,11 +8,11 @@ html, body {
     font-size: 48px;
 }
 
-.chletter {
+.answer {
     font-size: 48px;
     color: transparent;
 }
 
-.chletter:hover {
+.answer:hover {
     color: white;
 }

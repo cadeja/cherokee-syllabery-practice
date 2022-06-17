@@ -1,5 +1,5 @@
 const letter = document.getElementById('letter');
-const chletter = document.getElementById('chletter')
+const answer = document.getElementById('answer');
 
 
 // Cherokee Syllabery Rows
@@ -38,6 +38,7 @@ const crows = [
 const randomLetter = document.getElementById('random-letter');
 randomLetter.addEventListener('click', () => {
     let letterRows = [];
+    let scriptChoice = [];
 
     //check if row selectors are checked and adds row index to letterRows
     for (let i = 1; i <= 13; i++){
@@ -46,11 +47,12 @@ randomLetter.addEventListener('click', () => {
         }
     }
 
+
     if (letterRows.length >= 1){
         let selectedRow = letterRows[Math.floor(Math.random() * letterRows.length)];
         let selectedLetter = Math.floor(Math.random() * prows[selectedRow].length);
         letter.textContent = prows[selectedRow][selectedLetter];
-        chletter.textContent = crows[selectedRow][selectedLetter];
+        answer.textContent = crows[selectedRow][selectedLetter];
     }
     
 
