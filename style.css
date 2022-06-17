@@ -1,0 +1,18 @@
+html, body {
+    background-color: black;
+    color: white;
+}
+
+
+.letter {
+    font-size: 48px;
+}
+
+.chletter {
+    font-size: 48px;
+    color: transparent;
+}
+
+.chletter:hover {
+    color: white;
+}
