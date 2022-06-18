@@ -3,7 +3,7 @@ const answer = document.getElementById('answer');
 
 
 // Cherokee Syllabery Rows
-const prows = [
+const lRows = [
     ["a", "e", "i", "o", "u", "v"],
     ["ga", "ka", "ke/ge", "ki/gi", "ko/go", "ku/gu", "kv/gv"],
     ["ha", "he", "hi", "ho", "hu", "hv"],
@@ -18,7 +18,7 @@ const prows = [
     ["wa", "we", "wi", "wo", "wu", "wv"],
     ["ya", "ye", "yi", "yo", "yu", "yv"]];
 
-const crows = [
+const cRows = [
     ["\u13A0", "\u13A1", "\u13A2", "\u13A3", "\u13A4", "\u13A5"],
     ["\u13A6", "\u13A7", "\u13A8", "\u13A9", "\u13AA", "\u13AB", "\u13AC"],
     ["\u13AD", "\u13AE", "\u13AF", "\u13B0", "\u13B1", "\u13B2"],
@@ -38,7 +38,6 @@ const crows = [
 const randomLetter = document.getElementById('random-letter');
 randomLetter.addEventListener('click', () => {
     let letterRows = [];
-    let scriptChoice = [];
 
     //check if row selectors are checked and adds row index to letterRows
     for (let i = 1; i <= 13; i++){
@@ -46,13 +45,16 @@ randomLetter.addEventListener('click', () => {
             letterRows.push(i - 1);
         }
     }
-
+    let scriptChoice = document.querySelector('input[name="script_choice"]:checked').value;
+    let scriptSelectors = [lRows, cRows];
+    
+    (scriptChoice == "Cherokee") ? scriptSelectors = [cRows, lRows] : scriptSelectors = [lRows, cRows];
 
     if (letterRows.length >= 1){
         let selectedRow = letterRows[Math.floor(Math.random() * letterRows.length)];
-        let selectedLetter = Math.floor(Math.random() * prows[selectedRow].length);
-        letter.textContent = prows[selectedRow][selectedLetter];
-        answer.textContent = crows[selectedRow][selectedLetter];
+        let selectedLetter = Math.floor(Math.random() * lRows[selectedRow].length);
+        letter.textContent = scriptSelectors[0][selectedRow][selectedLetter];
+        answer.textContent = scriptSelectors[1][selectedRow][selectedLetter];
     }
     
 
